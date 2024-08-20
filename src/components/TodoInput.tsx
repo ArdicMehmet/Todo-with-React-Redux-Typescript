@@ -18,7 +18,7 @@ const TodoInput: React.FC = () => {
                 dispatch(setTodoId(null));
             }
         }
-        if (e.key == 'Enter' && !inputText) {
+        if (e.key === 'Enter' && !inputText) {
             alert('Please enter some text');
         }
     }
