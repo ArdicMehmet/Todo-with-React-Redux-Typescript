@@ -6,15 +6,20 @@ const TodoInput: React.FC = () => {
     const inputText = useSelector((state: RootState) => state.todo.inputText);
     const selectedTodoId = useSelector((state: RootState) => state.todo.selectedTodoId);
     const dispatch: AppDispatch = useDispatch();
-    function handleKeyDown(e: any): void {
-        if (e.key === 'Enter' && !selectedTodoId) {
-            dispatch(addTodo(inputText));
-            clearText();
+    function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>): void {
+        if (e.key === 'Enter' && inputText) {
+            if (!selectedTodoId) {
+                dispatch(addTodo(inputText));
+                clearText();
+            }
+            if (selectedTodoId) {
+                dispatch(updateTodo({ id: selectedTodoId, work: inputText }));
+                clearText();
+                dispatch(setTodoId(null));
+            }
         }
-        if (e.key === 'Enter' && selectedTodoId) {
-            dispatch(updateTodo({ id: selectedTodoId, work: inputText }));
-            clearText();
-            dispatch(setTodoId(null));
+        if (e.key == 'Enter' && !inputText) {
+            alert('Please enter some text');
         }
     }
     function clearText(): void {

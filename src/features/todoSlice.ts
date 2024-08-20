@@ -15,6 +15,10 @@ const todoSlice = createSlice({
       state.todos.push({id:Date.now(), work:action.payload,completed:false});
     },
     deleteTodo: (state, action: PayloadAction<number>) => {
+      if(state.selectedTodoId === action.payload){
+        state.selectedTodoId = null;
+        state.inputText='';
+      }
       state.todos = [...state.todos.filter(todo => todo.id !== action.payload)];
     },
     updateTodo: (state, action: PayloadAction<{id:number, work:string}>) => {

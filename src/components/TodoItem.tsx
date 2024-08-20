@@ -5,8 +5,7 @@ import { TodoItemProps } from '../interfaces/todo'
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { deleteTodo, setTodoId, setInputText, setComplatedTodo } from '../features/todoSlice';
-const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
-    const { id, work, completed } = todo;
+const TodoItem: React.FC<TodoItemProps> = ({ todo: { id, work, completed } }) => {
     const dispatch: AppDispatch = useDispatch();
     function handleUpdate(id: TodoIdType, text: string): void {
         dispatch(setTodoId(id));
