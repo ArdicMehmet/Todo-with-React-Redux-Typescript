@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-Todo App with Html5, Css3, Ts, React, Redux
+Todo App with Html5, Css3, Ts, React, Redux.
 
 Live : https://ardicmehmet.github.io/Todo-with-React-Redux-Typescript/
 
